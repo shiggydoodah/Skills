@@ -16,6 +16,7 @@ Codex-style workflows.
 - [`write-a-skill`](./skills/write-a-skill/SKILL.md) - Create new agent skills with the right structure.
 - [`add-commit`](./skills/add-commit/SKILL.md) - Write clear short or detailed Git commit messages.
 - [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
+- [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage and address GitHub PR review feedback safely.
 
 ## Install In Claude Code
 
@@ -46,11 +47,15 @@ Invoke the skills as:
 /add-commit short
 /create-pr
 /create-pr --open
+/review-pr-feedback
 ```
 
 `/create-pr` creates a draft GitHub PR by default. Use `/create-pr --open` to
 create the draft PR and open it in the browser, or ask for title/body only when
 you do not want a PR created.
+
+`/review-pr-feedback` triages PR review feedback first and waits for approval
+before making code changes or replying to comments.
 
 ## Local Development
 
