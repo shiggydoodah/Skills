@@ -28,6 +28,10 @@ Codex-style workflows.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage and address GitHub PR review feedback safely.
 - [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
 
+**Planning**
+
+- [`plan-of-action`](./skills/plan-of-action/SKILL.md) - Break a task or spec into a sequenced plan with rich copy-paste agent prompts.
+
 **Utilities**
 
 - [`grill-me`](./skills/grill-me/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
