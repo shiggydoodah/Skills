@@ -32,6 +32,10 @@ Codex-style workflows.
 
 - [`plan-of-action`](./skills/plan-of-action/SKILL.md) - Break a task or spec into a sequenced plan with rich copy-paste agent prompts.
 
+**Codebase context**
+
+- [`map-context`](./skills/map-context/SKILL.md) - Generate CONTEXT.md files and a CONTEXT-MAP.md index so agents navigate large repos without reading the whole codebase.
+
 **Utilities**
 
 - [`grill-me`](./skills/grill-me/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
