@@ -15,6 +15,7 @@ Codex-style workflows.
 - [`caveman`](./skills/caveman/SKILL.md) - Ultra-compressed communication mode.
 - [`write-a-skill`](./skills/write-a-skill/SKILL.md) - Create new agent skills with the right structure.
 - [`add-commit`](./skills/add-commit/SKILL.md) - Write clear short or detailed Git commit messages.
+- [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 
 ## Install In Claude Code
 
@@ -43,7 +44,13 @@ Invoke the skills as:
 /ll-skills:write-a-skill
 /add-commit
 /add-commit short
+/create-pr
+/create-pr --open
 ```
+
+`/create-pr` creates a draft GitHub PR by default. Use `/create-pr --open` to
+create the draft PR and open it in the browser, or ask for title/body only when
+you do not want a PR created.
 
 ## Local Development
 
