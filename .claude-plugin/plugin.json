@@ -1,0 +1,20 @@
+{
+  "name": "ll-skills",
+  "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Louis Lombardi"
+  },
+  "homepage": "https://github.com/shiggydoodah/Skills",
+  "repository": "https://github.com/shiggydoodah/Skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "tdd",
+    "debugging"
+  ],
+  "skills": "./skills/"
+}
+

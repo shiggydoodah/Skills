@@ -1,0 +1,41 @@
+{
+  "name": "ll-skills",
+  "version": "0.1.0",
+  "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
+  "author": {
+    "name": "Louis Lombardi",
+    "url": "https://github.com/shiggydoodah"
+  },
+  "homepage": "https://github.com/shiggydoodah/Skills",
+  "repository": "https://github.com/shiggydoodah/Skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "tdd",
+    "debugging"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "LL Skills",
+    "shortDescription": "Practical coding-agent skills",
+    "longDescription": "A curated set of coding-agent skills for disciplined TDD, debugging, concise communication, planning interviews, and writing new skills.",
+    "developerName": "Louis Lombardi",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/shiggydoodah/Skills",
+    "defaultPrompt": [
+      "Use TDD to build this feature.",
+      "Diagnose this failing behavior.",
+      "Grill me on this implementation plan."
+    ],
+    "brandColor": "#111111",
+    "screenshots": []
+  }
+}
+
