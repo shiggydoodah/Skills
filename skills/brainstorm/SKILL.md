@@ -5,7 +5,7 @@ description: Grills the user about a feature idea to surface requirements and co
 
 # brainstorm
 
-A focused grill-me session that extracts product requirements and constraints from a rough idea.
+A focused grilling session that extracts product requirements and constraints from a rough idea.
 
 ## Behaviour
 

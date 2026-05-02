@@ -3,7 +3,7 @@ name: commit-this
 description: Write, review, or improve Git commit messages in short or detailed modes. Use when the user invokes /commit-this, asks for a commit message, commit title, commit body, conventional commit, or help splitting broad changes into reviewable commits.
 ---
 
-# Add Commit
+# Commit This
 
 ## Goal
 
@@ -22,13 +22,13 @@ reviewable changes, and truthful verification or risk notes when relevant.
 ## Invocation
 
 ```text
-/add-commit
+/commit-this
 ```
 
 Write a detailed commit message for the current diff.
 
 ```text
-/add-commit short
+/commit-this short
 ```
 
 Write a short one-line commit message for the current diff.

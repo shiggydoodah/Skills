@@ -12,18 +12,18 @@ Codex-style workflows.
 **Spec-to-code pipeline**
 
 - [`spec-to-code`](./skills/spec-to-code/SKILL.md) - Orchestrate the full pipeline from a rough idea to a complete TECH_SPEC.md.
-- [`brainstorm`](./skills/brainstorm/SKILL.md) - Grill-me session that extracts requirements and writes CONTEXT.md incrementally.
+- [`brainstorm`](./skills/brainstorm/SKILL.md) - Grilling session that extracts requirements and writes CONTEXT.md incrementally.
 - [`create-prd`](./skills/create-prd/SKILL.md) - Produce a structured PRD.md from brainstorm context or an IDEA.md seed.
 - [`create-spec`](./skills/create-spec/SKILL.md) - Produce a TECH_SPEC.md from a PRD.md with adaptive sections and a coverage gate.
 
 **Development workflow**
 
-- [`tdd`](./skills/tdd/SKILL.md) - Test-driven development with a red-green-refactor loop.
-- [`diagnose`](./skills/diagnose/SKILL.md) - Disciplined debugging for bugs and performance regressions.
+- [`use-tdd`](./skills/use-tdd/SKILL.md) - Test-driven development with a red-green-refactor loop.
+- [`run-diagnose`](./skills/run-diagnose/SKILL.md) - Disciplined debugging for bugs and performance regressions.
 
 **Git and GitHub**
 
-- [`add-commit`](./skills/add-commit/SKILL.md) - Write clear short or detailed Git commit messages.
+- [`commit-this`](./skills/commit-this/SKILL.md) - Write clear short or detailed Git commit messages.
 - [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage and address GitHub PR review feedback safely.
 - [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
@@ -38,9 +38,9 @@ Codex-style workflows.
 
 **Utilities**
 
-- [`grill-me`](./skills/grill-me/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
-- [`caveman`](./skills/caveman/SKILL.md) - Ultra-compressed communication mode.
-- [`write-a-skill`](./skills/write-a-skill/SKILL.md) - Create new agent skills with the right structure.
+- [`grill-baby-grill`](./skills/grill-baby-grill/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
+- [`me-caveman`](./skills/me-caveman/SKILL.md) - Ultra-compressed communication mode.
+- [`create-a-skill`](./skills/create-a-skill/SKILL.md) - Create new agent skills with the right structure.
 
 ## Install In Claude Code
 
@@ -62,13 +62,13 @@ Or inside Claude Code:
 Invoke the skills as:
 
 ```text
-/ll-skills:tdd
-/ll-skills:diagnose
-/ll-skills:grill-me
-/ll-skills:caveman
-/ll-skills:write-a-skill
-/add-commit
-/add-commit short
+/use-tdd
+/run-diagnose
+/grill-baby-grill
+/me-caveman
+/create-a-skill
+/commit-this
+/commit-this short
 /create-pr
 /create-pr --open
 /review-pr-feedback
@@ -124,7 +124,7 @@ orchestrator detects how far along it is and picks up from there:
 **Run individual steps** — each sub-skill works standalone:
 
 ```text
-/brainstorm              # grill-me session, writes CONTEXT.md
+/brainstorm              # grilling session, writes CONTEXT.md
 /create-prd              # PRD.md from CONTEXT.md or IDEA.md
 /create-spec             # TECH_SPEC.md from PRD.md (errors if no PRD.md)
 ```
