@@ -1,6 +1,6 @@
 ---
-name: add-commit
-description: Write, review, or improve Git commit messages in short or detailed modes. Use when the user invokes /add-commit, asks for a commit message, commit title, commit body, conventional commit, or help splitting broad changes into reviewable commits.
+name: commit-this
+description: Write, review, or improve Git commit messages in short or detailed modes. Use when the user invokes /commit-this, asks for a commit message, commit title, commit body, conventional commit, or help splitting broad changes into reviewable commits.
 ---
 
 # Add Commit
