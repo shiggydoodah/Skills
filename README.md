@@ -17,6 +17,7 @@ Codex-style workflows.
 - [`add-commit`](./skills/add-commit/SKILL.md) - Write clear short or detailed Git commit messages.
 - [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage and address GitHub PR review feedback safely.
+- [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
 
 ## Install In Claude Code
 
@@ -48,6 +49,7 @@ Invoke the skills as:
 /create-pr
 /create-pr --open
 /review-pr-feedback
+/do-review
 ```
 
 `/create-pr` creates a draft GitHub PR by default. Use `/create-pr --open` to
@@ -56,6 +58,9 @@ you do not want a PR created.
 
 `/review-pr-feedback` triages PR review feedback first and waits for approval
 before making code changes or replying to comments.
+
+`/do-review` performs a review-only local PR-style review of the current feature
+branch diff and stops on `main` or `master`.
 
 ## Local Development
 
