@@ -14,6 +14,7 @@ Codex-style workflows.
 - [`grill-me`](./skills/grill-me/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
 - [`caveman`](./skills/caveman/SKILL.md) - Ultra-compressed communication mode.
 - [`write-a-skill`](./skills/write-a-skill/SKILL.md) - Create new agent skills with the right structure.
+- [`add-commit`](./skills/add-commit/SKILL.md) - Write clear short or detailed Git commit messages.
 
 ## Install In Claude Code
 
@@ -32,7 +33,7 @@ Or inside Claude Code:
 /reload-plugins
 ```
 
-Claude plugin skills are namespaced by the plugin name, so invoke them as:
+Invoke the skills as:
 
 ```text
 /ll-skills:tdd
@@ -40,6 +41,8 @@ Claude plugin skills are namespaced by the plugin name, so invoke them as:
 /ll-skills:grill-me
 /ll-skills:caveman
 /ll-skills:write-a-skill
+/add-commit
+/add-commit short
 ```
 
 ## Local Development
@@ -72,4 +75,5 @@ install path for now.
 ## Attribution
 
 The initial skills are copied from Matt Pocock's
-[`mattpocock/skills`](https://github.com/mattpocock/skills)
+[`mattpocock/skills`](https://github.com/mattpocock/skills) repo under the MIT
+License.
