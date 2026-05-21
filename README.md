@@ -26,7 +26,7 @@ reach and hard to forget.
 
 **Git and GitHub**
 
-- [`commit-this`](./skills/commit-this/SKILL.md) - Write clear short or detailed Git commit messages.
+- [`commit-this`](./skills/commit-this/SKILL.md) - Stage and create clear short or detailed Git commits, with an optional print-only preview.
 - [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage GitHub PR review feedback before changing code.
 - [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
@@ -71,7 +71,9 @@ Or run the same flow inside Claude Code:
 /me-caveman
 /create-a-skill
 /commit-this
-/commit-this short
+/commit-this --short
+/commit-this --print
+/commit-this --short --print
 /create-pr
 /create-pr --open
 /review-pr-feedback
@@ -85,6 +87,9 @@ Or run the same flow inside Claude Code:
 
 A few notes:
 
+- `/commit-this` stages the current work and creates a detailed commit by
+  default. Use `--short` for a one-line commit, and `--print` to preview the
+  message before deciding whether to add it to the git tree.
 - `/create-pr` creates a draft GitHub PR by default. Use `/create-pr --open` to
   create it and open it in the browser.
 - `/review-pr-feedback` triages PR review feedback first and waits for approval
