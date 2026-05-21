@@ -41,7 +41,7 @@ reach and hard to forget.
 
 **Utilities**
 
-- [`me-caveman`](./skills/me-caveman/SKILL.md) - Ultra-compressed communication mode.
+- [`caveman`](./skills/caveman/SKILL.md) - Ultra-compressed communication mode.
 - [`create-a-skill`](./skills/create-a-skill/SKILL.md) - Create new agent skills with the right structure.
 
 ## Install
