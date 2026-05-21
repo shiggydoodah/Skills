@@ -36,6 +36,7 @@ reach and hard to forget.
 
 **Codebase context**
 
+- [`create-context`](./skills/create-context/SKILL.md) - Create one compressed `CONTEXT.md` for a target app, package, or directory.
 - [`map-context`](./skills/map-context/SKILL.md) - Generate `CONTEXT.md` files and a root `CONTEXT-MAP.md` for faster codebase navigation.
 
 **Utilities**
@@ -81,6 +82,8 @@ Or run the same flow inside Claude Code:
 /brainstorm
 /create-prd
 /create-tech-spec
+/create-context apps/web
+/map-context
 ```
 
 A few notes:

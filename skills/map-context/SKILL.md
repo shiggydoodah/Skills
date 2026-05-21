@@ -7,6 +7,9 @@ description: Generates CONTEXT.md files for each meaningful directory in a codeb
 
 Traverses a codebase, writes a CONTEXT.md for each meaningful directory, builds a CONTEXT-MAP.md index at the repo root, and registers it in CLAUDE.md so agents use it automatically.
 
+For a targeted refresh of one app, package, subsystem, or directory, use
+`create-context` instead.
+
 ## Invocation
 
 ```
