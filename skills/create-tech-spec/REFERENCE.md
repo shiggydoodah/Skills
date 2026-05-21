@@ -1,6 +1,6 @@
-# spec-to-code Reference
+# Feature Docs Reference
 
-Shared conventions for the `spec-to-code` skill set.
+Shared conventions for the `brainstorm`, `create-prd`, and `create-tech-spec` skills.
 
 ## Directory Structure
 
@@ -11,7 +11,7 @@ docs/features/[feature-name]/
 ├── IDEA.md       # user-provided raw seed (optional, never modified by agent)
 ├── CONTEXT.md    # agent session memory, updated incrementally
 ├── PRD.md        # output of /create-prd
-└── TECH_SPEC.md  # output of /create-spec
+└── TECH_SPEC.md  # output of /create-tech-spec
 ```
 
 Feature names are kebab-case slugs inferred from the idea (e.g. `oauth-login`, `csv-export`).
@@ -23,7 +23,7 @@ Feature names are kebab-case slugs inferred from the idea (e.g. `oauth-login`, `
 | `IDEA.md`      | User  | Raw seed. Agent reads but never modifies.            |
 | `CONTEXT.md`   | Agent | Updated incrementally during brainstorm.             |
 | `PRD.md`       | Agent | Written by `/create-prd`. Patched, not overwritten.  |
-| `TECH_SPEC.md` | Agent | Written by `/create-spec`. Patched, not overwritten. |
+| `TECH_SPEC.md` | Agent | Written by `/create-tech-spec`. Patched, not overwritten. |
 
 ## CONTEXT.md Structure
 

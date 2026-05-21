@@ -1,23 +1,44 @@
 ---
 name: commit-this
-description: Write, review, or improve Git commit messages in short or detailed modes. Use when the user invokes /commit-this, asks for a commit message, commit title, commit body, conventional commit, or help splitting broad changes into reviewable commits.
+description: Create a git commit for the current work by default, or write/review a commit message when requested with --print. Supports short and detailed modes. Use when the user invokes /commit-this, asks to commit current changes, asks for a commit message, commit title, commit body, conventional commit, or help splitting broad changes into reviewable commits.
 ---
 
 # Commit This
 
 ## Goal
 
-Write commit messages that make history useful: clear scope, specific intent,
+Create commits that make history useful: clear scope, specific intent,
 reviewable changes, and truthful verification or risk notes when relevant.
+
+By default, this skill stages the relevant work and creates a git commit. It
+only prints the commit message without committing when the user passes
+`--print`.
 
 ## Workflow
 
-1. Inspect the provided diff, summary, staged changes, or user description.
-2. If there is no diff, staged change, repo change, or usable summary to inspect, instantly return a silly error message instead of writing a commit.
+1. Inspect the repository state with `git status --short`, then inspect the
+   relevant staged and unstaged diffs.
+2. If there is no staged or unstaged git diff, exit immediately with a short
+   silly error message. Do not write a commit message and do not run
+   `git commit`.
 3. Decide whether the change is one logical commit.
-4. If unrelated work is mixed together, recommend splitting it into separate commits.
-5. Choose the requested mode. If the user passes `short`, use short mode. If no mode is requested, use detailed mode.
-6. Return the commit message only unless the user asks for explanation.
+4. If unrelated work is mixed together, recommend splitting it into separate
+   commits instead of committing.
+5. Choose the requested mode. If the user passes `--short`, use short mode. If
+   no mode is requested, use detailed mode.
+6. Resolve staging:
+   - If there are both staged and unstaged changes, ask the user whether to
+     include the unstaged changes or commit only the staged changes.
+   - If the user chooses to include unstaged changes, run `git add .`.
+   - If the user chooses staged changes only, do not stage anything else.
+   - If the work is all staged or all unstaged, run `git add .` before
+     committing.
+7. Create the commit with `git commit` using the generated message, unless the
+   user passed `--print`.
+8. If the user passed `--print`, print the commit message to the current window
+   instead of staging or committing, then ask: "Add this commit to the git tree?
+   Yes or No". If the user says yes, follow the normal staging and commit
+   workflow. If the user says no, stop.
 
 ## Invocation
 
@@ -25,24 +46,48 @@ reviewable changes, and truthful verification or risk notes when relevant.
 /commit-this
 ```
 
-Write a detailed commit message for the current diff.
+Create a detailed commit for the current diff.
 
 ```text
-/commit-this short
+/commit-this --short
 ```
 
-Write a short one-line commit message for the current diff.
+Create a short one-line commit for the current diff.
+
+```text
+/commit-this --print
+```
+
+Print a detailed commit message for the current diff, then ask whether to add
+it to the git tree.
+
+```text
+/commit-this --short --print
+```
+
+Print a short one-line commit message for the current diff, then ask whether to
+add it to the git tree.
 
 ## No-Diff Error
 
-If there is nothing to write a commit message from, return a short funny or
-silly error message immediately.
+If there is no staged or unstaged git diff, return a short funny or silly error
+message immediately.
 
 Example:
 
 ```text
 Commit machine says: no diff, no cookie.
 ```
+
+## Commit Behavior
+
+- Default behavior is to create a git commit, not merely print a message.
+- `--print` is the only flag that changes the default into print-only preview.
+- `--short` only changes the message format; it does not change whether a
+  commit is created.
+- When committing, prefer `git commit -m "<subject>"` for short mode and a
+  commit message file or multiple `-m` flags for detailed mode.
+- After committing, report the commit hash and subject briefly.
 
 ## Commit Rules
 
@@ -55,7 +100,7 @@ Commit machine says: no diff, no cookie.
 
 ## Short Mode
 
-Use only when the user passes `short` or explicitly asks for a concise
+Use only when the user passes `--short` or explicitly asks for a concise
 one-line commit.
 
 Format:

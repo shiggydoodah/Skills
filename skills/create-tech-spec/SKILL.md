@@ -1,9 +1,9 @@
 ---
-name: create-spec
-description: Creates or updates TECH_SPEC.md from an existing PRD.md. Detects project type from the codebase and adapts sections accordingly. Runs a blocking requirements coverage check before finalising. Use when user wants to write a technical specification, turn a PRD into a tech spec, or mentions "create-spec".
+name: create-tech-spec
+description: Creates or updates TECH_SPEC.md from an existing PRD.md. Detects project type from the codebase and adapts sections accordingly. Runs a blocking requirements coverage check before finalising. Use when user wants to write a technical specification, turn a PRD into a tech spec, or mentions "create-tech-spec".
 ---
 
-# create-spec
+# create-tech-spec
 
 Produces a structured `TECH_SPEC.md` from an existing `PRD.md`.
 
@@ -53,4 +53,4 @@ If `TECH_SPEC.md` already exists:
 
 ## Reference
 
-See [../spec-to-code/REFERENCE.md](../spec-to-code/REFERENCE.md) for directory structure and section templates.
+See [REFERENCE.md](REFERENCE.md) for directory structure and section templates.

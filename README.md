@@ -12,12 +12,11 @@ reach and hard to forget.
 
 ## Skills
 
-**Spec-to-code pipeline**
+**Feature docs**
 
-- [`spec-to-code`](./skills/spec-to-code/SKILL.md) - Take a rough idea through brainstorm, PRD, and technical spec.
 - [`brainstorm`](./skills/brainstorm/SKILL.md) - Stress-test an idea and write `CONTEXT.md` as decisions settle.
 - [`create-prd`](./skills/create-prd/SKILL.md) - Turn context or an `IDEA.md` seed into a structured `PRD.md`.
-- [`create-spec`](./skills/create-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
+- [`create-tech-spec`](./skills/create-tech-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
 
 **Development workflow**
 
@@ -26,10 +25,10 @@ reach and hard to forget.
 
 **Git and GitHub**
 
-- [`commit-this`](./skills/commit-this/SKILL.md) - Write clear short or detailed Git commit messages.
-- [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
+- [`commit-this`](./skills/commit-this/SKILL.md) - Stage and create clear short or detailed Git commits, with an optional print-only preview.
+- [`create-pr`](./skills/create-pr/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage GitHub PR review feedback before changing code.
-- [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
+- [`code-review`](./skills/code-review/SKILL.md) - Review the current feature branch diff by default, or review a GitHub PR with optional inline comments.
 
 **Planning**
 
@@ -37,11 +36,11 @@ reach and hard to forget.
 
 **Codebase context**
 
-- [`map-context`](./skills/map-context/SKILL.md) - Generate `CONTEXT.md` files and a root `CONTEXT-MAP.md` for faster codebase navigation.
+- [`create-context`](./skills/create-context/SKILL.md) - Create one compressed `CONTEXT.md` for a target app, package, or directory.
+- [`map-context`](./skills/map-context/SKILL.md) - Generate a compressed root `CONTEXT-MAP.md` birds-eye index for faster codebase navigation.
 
 **Utilities**
 
-- [`grill-baby-grill`](./skills/grill-baby-grill/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
 - [`me-caveman`](./skills/me-caveman/SKILL.md) - Ultra-compressed communication mode.
 - [`create-a-skill`](./skills/create-a-skill/SKILL.md) - Create new agent skills with the right structure.
 
@@ -67,35 +66,45 @@ Or run the same flow inside Claude Code:
 ```text
 /use-tdd
 /run-diagnose
-/grill-baby-grill
 /me-caveman
 /create-a-skill
 /commit-this
-/commit-this short
+/commit-this --short
+/commit-this --print
+/commit-this --short --print
 /create-pr
 /create-pr --open
+/create-pr .github/templates/documentation-template.md
 /review-pr-feedback
-/do-review
-/spec-to-code
-/spec-to-code docs/features/my-feature/
+/code-review
+/code-review --pr https://github.com/org/repo/pull/42
+/code-review --inline --pr https://github.com/org/repo/pull/42
 /brainstorm
 /create-prd
-/create-spec
+/create-tech-spec
+/create-context apps/web
+/map-context
 ```
 
 A few notes:
 
+- `/commit-this` stages the current work and creates a detailed commit by
+  default. Use `--short` for a one-line commit, and `--print` to preview the
+  message before deciding whether to add it to the git tree.
 - `/create-pr` creates a draft GitHub PR by default. Use `/create-pr --open` to
-  create it and open it in the browser.
+  create it and open it in the browser, or pass a Markdown template path to use
+  an alternate PR template.
 - `/review-pr-feedback` triages PR review feedback first and waits for approval
   before changing code or replying to comments.
-- `/do-review` performs a review-only local PR-style review of the current
-  feature branch diff. It stops on `main` and `master`.
+- `/code-review` performs a review-only local PR-style review of the current
+  feature branch diff. Use `--pr <URL>` or a bare GitHub PR URL to review a PR,
+  and `--inline` to post findings as GitHub review comments. If present,
+  `.github/instructions/pr-review.instructions.md` is used as project-specific
+  review guidance; otherwise PR reviews use the PR description for context.
 
-## Spec-To-Code
+## Feature Docs
 
-The spec-to-code flow is for turning a loose idea into implementation-ready
-feature docs.
+These skills turn a loose idea into implementation-ready feature docs.
 
 By default, feature documents live under `docs/features/[feature-name]/`:
 
@@ -107,32 +116,35 @@ docs/features/my-feature/
 └── TECH_SPEC.md   # technical specification ready for implementation
 ```
 
-Run the full pipeline from a rough idea:
+Run the steps in sequence from a rough idea:
 
 ```text
-/spec-to-code add user authentication with GitHub OAuth
+/brainstorm add user authentication with GitHub OAuth
+/create-prd
+/create-tech-spec
 ```
 
-The agent infers a feature name, proposes the directory, then runs
-`/brainstorm` → `/create-prd` → `/create-spec` in sequence.
+The agent infers a feature name during brainstorm, proposes the directory, then
+uses the saved context to write `PRD.md` and `TECH_SPEC.md`.
 
-Resume an in-progress feature by pointing at its directory:
+Resume an in-progress feature by running the next step from its directory:
 
 ```text
-/spec-to-code docs/features/github-oauth/
+/create-prd
+/create-tech-spec
 ```
 
 Each step also works on its own:
 
 ```text
-/brainstorm              # grilling session, writes CONTEXT.md
+/brainstorm              # focused interview, writes CONTEXT.md
 /create-prd              # PRD.md from CONTEXT.md or IDEA.md
-/create-spec             # TECH_SPEC.md from PRD.md (errors if no PRD.md)
+/create-tech-spec        # TECH_SPEC.md from PRD.md (errors if no PRD.md)
 ```
 
-`/create-spec` detects the project type from the codebase (backend, frontend,
-or fullstack), adapts the `TECH_SPEC.md` sections, and checks that every PRD
-requirement is covered before finalising the document.
+`/create-tech-spec` detects the project type from the codebase (backend,
+frontend, or fullstack), adapts the `TECH_SPEC.md` sections, and checks that
+every PRD requirement is covered before finalising the document.
 
 ## Local Development
 

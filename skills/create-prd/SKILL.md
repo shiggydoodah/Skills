@@ -14,7 +14,7 @@ Read in order of preference:
 1. `CONTEXT.md` (agent session memory — preferred)
 2. `IDEA.md` (user-provided seed)
 
-If neither exists, run a domain-specific brainstorm first — focused on extracting product requirements, not general grilling — then write `PRD.md` from the outcome.
+If neither exists, run a domain-specific brainstorm first — focused on extracting product requirements, not general planning critique — then write `PRD.md` from the outcome.
 
 ## PRD Sections
 
@@ -42,4 +42,4 @@ If `PRD.md` already exists:
 
 ## Reference
 
-See [../spec-to-code/REFERENCE.md](../spec-to-code/REFERENCE.md) for directory structure and section templates.
+See [../create-tech-spec/REFERENCE.md](../create-tech-spec/REFERENCE.md) for directory structure and section templates.
