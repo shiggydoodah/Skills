@@ -1,52 +1,10 @@
 ---
 name: brainstorm
-description: Interviews the user about a feature idea to surface requirements and constraints, then writes CONTEXT.md as incremental session memory. Reads IDEA.md as seed if present. Use when user wants to brainstorm a feature, stress-test an idea, or create initial feature context before writing a PRD.
+description: Interview the user relentlessly about a plan, design, or idea until reaching shared understanding and resolving each branch of the decision tree. Use when the user wants to stress-test a plan, get grilled on a design or idea, or mentions "grill me", "stress-test", or "brainstorm".
 ---
 
-# brainstorm
+Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 
-A focused interview that extracts product requirements and constraints from a rough idea.
-
-## Behaviour
-
-Interview the user relentlessly. Walk down each branch of the decision tree, resolving dependencies one-by-one. For each question, provide your recommended answer.
-
-Ask questions one at a time.
+Ask the questions one at a time.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
-
-## Seed Input
-
-If `IDEA.md` exists in the feature directory, read it first and use its content as the starting context. Do not re-ask questions already answered by it.
-
-## CONTEXT.md
-
-Write `CONTEXT.md` incrementally — after each resolved decision branch, not after every message.
-
-Structure:
-
-```md
-## Resolved Decisions
-
-- [decision]: [outcome]
-
-## Open Questions
-
-- [question]
-
-## Key Constraints
-
-- [constraint]
-
-## Raw Notes
-
-[unstructured content from IDEA.md or session seed]
-```
-
-If no feature directory exists yet, create it when writing the first `CONTEXT.md` update.
-
-Can be used standalone or before `/create-prd` and `/create-tech-spec`.
-
-## Reference
-
-See [../create-tech-spec/REFERENCE.md](../create-tech-spec/REFERENCE.md) for directory structure and document formats.
