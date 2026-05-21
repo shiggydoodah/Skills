@@ -1,11 +1,11 @@
 ---
 name: brainstorm
-description: Grills the user about a feature idea to surface requirements and constraints, then writes CONTEXT.md as incremental session memory. Reads IDEA.md as seed if present. Use when user wants to brainstorm a feature, stress-test an idea, or create initial feature context before writing a PRD.
+description: Interviews the user about a feature idea to surface requirements and constraints, then writes CONTEXT.md as incremental session memory. Reads IDEA.md as seed if present. Use when user wants to brainstorm a feature, stress-test an idea, or create initial feature context before writing a PRD.
 ---
 
 # brainstorm
 
-A focused grilling session that extracts product requirements and constraints from a rough idea.
+A focused interview that extracts product requirements and constraints from a rough idea.
 
 ## Behaviour
 
@@ -45,8 +45,8 @@ Structure:
 
 If no feature directory exists yet, create it when writing the first `CONTEXT.md` update.
 
-Can be used standalone or as the first step in the `/spec-to-code` pipeline.
+Can be used standalone or before `/create-prd` and `/create-tech-spec`.
 
 ## Reference
 
-See [../spec-to-code/REFERENCE.md](../spec-to-code/REFERENCE.md) for directory structure and document formats.
+See [../create-tech-spec/REFERENCE.md](../create-tech-spec/REFERENCE.md) for directory structure and document formats.

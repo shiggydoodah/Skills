@@ -32,10 +32,9 @@
     "defaultPrompt": [
       "Use TDD to build this feature.",
       "Diagnose this failing behavior.",
-      "Grill me on this implementation plan."
+      "Brainstorm this implementation plan."
     ],
     "brandColor": "#111111",
     "screenshots": []
   }
 }
-

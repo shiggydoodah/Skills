@@ -12,12 +12,11 @@ reach and hard to forget.
 
 ## Skills
 
-**Spec-to-code pipeline**
+**Feature docs**
 
-- [`spec-to-code`](./skills/spec-to-code/SKILL.md) - Take a rough idea through brainstorm, PRD, and technical spec.
 - [`brainstorm`](./skills/brainstorm/SKILL.md) - Stress-test an idea and write `CONTEXT.md` as decisions settle.
 - [`create-prd`](./skills/create-prd/SKILL.md) - Turn context or an `IDEA.md` seed into a structured `PRD.md`.
-- [`create-spec`](./skills/create-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
+- [`create-tech-spec`](./skills/create-tech-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
 
 **Development workflow**
 
@@ -41,7 +40,6 @@ reach and hard to forget.
 
 **Utilities**
 
-- [`grill-baby-grill`](./skills/grill-baby-grill/SKILL.md) - Interview and stress-test a plan until the decisions are clear.
 - [`me-caveman`](./skills/me-caveman/SKILL.md) - Ultra-compressed communication mode.
 - [`create-a-skill`](./skills/create-a-skill/SKILL.md) - Create new agent skills with the right structure.
 
@@ -67,7 +65,6 @@ Or run the same flow inside Claude Code:
 ```text
 /use-tdd
 /run-diagnose
-/grill-baby-grill
 /me-caveman
 /create-a-skill
 /commit-this
@@ -78,11 +75,9 @@ Or run the same flow inside Claude Code:
 /create-pr --open
 /review-pr-feedback
 /do-review
-/spec-to-code
-/spec-to-code docs/features/my-feature/
 /brainstorm
 /create-prd
-/create-spec
+/create-tech-spec
 ```
 
 A few notes:
@@ -97,10 +92,9 @@ A few notes:
 - `/do-review` performs a review-only local PR-style review of the current
   feature branch diff. It stops on `main` and `master`.
 
-## Spec-To-Code
+## Feature Docs
 
-The spec-to-code flow is for turning a loose idea into implementation-ready
-feature docs.
+These skills turn a loose idea into implementation-ready feature docs.
 
 By default, feature documents live under `docs/features/[feature-name]/`:
 
@@ -112,32 +106,35 @@ docs/features/my-feature/
 └── TECH_SPEC.md   # technical specification ready for implementation
 ```
 
-Run the full pipeline from a rough idea:
+Run the steps in sequence from a rough idea:
 
 ```text
-/spec-to-code add user authentication with GitHub OAuth
+/brainstorm add user authentication with GitHub OAuth
+/create-prd
+/create-tech-spec
 ```
 
-The agent infers a feature name, proposes the directory, then runs
-`/brainstorm` → `/create-prd` → `/create-spec` in sequence.
+The agent infers a feature name during brainstorm, proposes the directory, then
+uses the saved context to write `PRD.md` and `TECH_SPEC.md`.
 
-Resume an in-progress feature by pointing at its directory:
+Resume an in-progress feature by running the next step from its directory:
 
 ```text
-/spec-to-code docs/features/github-oauth/
+/create-prd
+/create-tech-spec
 ```
 
 Each step also works on its own:
 
 ```text
-/brainstorm              # grilling session, writes CONTEXT.md
+/brainstorm              # focused interview, writes CONTEXT.md
 /create-prd              # PRD.md from CONTEXT.md or IDEA.md
-/create-spec             # TECH_SPEC.md from PRD.md (errors if no PRD.md)
+/create-tech-spec        # TECH_SPEC.md from PRD.md (errors if no PRD.md)
 ```
 
-`/create-spec` detects the project type from the codebase (backend, frontend,
-or fullstack), adapts the `TECH_SPEC.md` sections, and checks that every PRD
-requirement is covered before finalising the document.
+`/create-tech-spec` detects the project type from the codebase (backend,
+frontend, or fullstack), adapts the `TECH_SPEC.md` sections, and checks that
+every PRD requirement is covered before finalising the document.
 
 ## Local Development
 
