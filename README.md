@@ -28,7 +28,7 @@ reach and hard to forget.
 - [`commit-this`](./skills/commit-this/SKILL.md) - Stage and create clear short or detailed Git commits, with an optional print-only preview.
 - [`create-pr-github`](./skills/create-pr-github/SKILL.md) - Create a high-signal draft GitHub PR from the current branch.
 - [`review-pr-feedback`](./skills/review-pr-feedback/SKILL.md) - Triage GitHub PR review feedback before changing code.
-- [`do-review`](./skills/do-review/SKILL.md) - Review the current feature branch diff before opening or updating a PR.
+- [`code-review`](./skills/code-review/SKILL.md) - Review the current feature branch diff by default, or review a GitHub PR with optional inline comments.
 
 **Planning**
 
@@ -74,7 +74,9 @@ Or run the same flow inside Claude Code:
 /create-pr
 /create-pr --open
 /review-pr-feedback
-/do-review
+/code-review
+/code-review --pr https://github.com/org/repo/pull/42
+/code-review --inline --pr https://github.com/org/repo/pull/42
 /brainstorm
 /create-prd
 /create-tech-spec
@@ -89,8 +91,11 @@ A few notes:
   create it and open it in the browser.
 - `/review-pr-feedback` triages PR review feedback first and waits for approval
   before changing code or replying to comments.
-- `/do-review` performs a review-only local PR-style review of the current
-  feature branch diff. It stops on `main` and `master`.
+- `/code-review` performs a review-only local PR-style review of the current
+  feature branch diff. Use `--pr <URL>` or a bare GitHub PR URL to review a PR,
+  and `--inline` to post findings as GitHub review comments. If present,
+  `.github/instructions/pr-review.instructions.md` is used as project-specific
+  review guidance; otherwise PR reviews use the PR description for context.
 
 ## Feature Docs
 
