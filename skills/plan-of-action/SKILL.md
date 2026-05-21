@@ -1,72 +1,102 @@
 ---
 name: plan-of-action
-description: Breaks a big task into a sequenced, actionable plan with rich copy-paste agent prompts. Explores the codebase first to ground every step in real file paths. Use when the user wants to plan a feature before building it, mentions "plan of action", wants fine-grained control over what an agent codes, or wants to break a spec into steps.
+description: Turns a PRD, tech spec, feature document, feature idea, or implementation request into copy-paste-ready agent prompt Markdown files. Use when the user mentions "plan of action", wants agent prompts, wants to break a spec into implementation prompts, or wants a large task split across commits or PRs.
 ---
 
 # plan-of-action
 
-Takes a task or spec and produces a sequenced plan of steps — each with a rich, self-contained agent prompt ready to copy-paste.
+Turns a PRD, tech spec, feature document, or feature idea into `AGENT_PROMPT.md`
+files that can be copied into coding agents one prompt at a time.
 
-## Entry
+## Input
 
-Accepts input in priority order:
+Read input in priority order:
 
 1. `@file` argument passed to the skill (e.g. `/plan-of-action @/TECH_SPEC.md`)
-2. `TECH_SPEC.md` in the project root — read automatically if present
-3. Free-form description in the conversation
+2. `TECH_SPEC.md`, `PRD.md`, or another obvious feature document in the current
+   feature folder or project root
+3. Free-form feature idea or implementation request in the conversation
 
 If none of these exist, ask the user to describe the task before continuing.
 
+## Output Location
+
+Respect an explicit output path from the user. Otherwise:
+
+- If the input file is in a feature folder, write prompt files there.
+- For root docs or free-form ideas, infer a short slug and write to
+  `docs/features/<slug>/`.
+- Create the feature folder if needed.
+- Treat generated prompt files as commit-worthy artifacts unless the user says
+  otherwise.
+
 ## Process
 
-### 1. Read the input
-Read the spec file or extract the task description from the conversation.
+1. **Read the source** - read the supplied file or extract the feature request
+   from the conversation. Also read nearby docs that clarify scope.
+2. **Explore the codebase** - inspect relevant files, directories, manifests,
+   patterns, entrypoints, tests, and integration boundaries. Use real file paths
+   in prompts; never guess.
+3. **Break down the work** - decide whether the task is one commit, one PR with
+   multiple commits, or multiple PRs. Split by user-visible, reviewable progress,
+   not by technical layer.
+4. **Write prompt files** - create the Markdown files and report their paths plus
+   the intended PR/commit breakdown.
 
-### 2. Explore the codebase
-Before generating anything, explore the repo to find:
-- Files and directories directly relevant to the task
-- Existing patterns, conventions, and abstractions to follow
-- Entry points, config files, and integration boundaries
+## Split Rules
 
-Use real file paths in every agent prompt — never guess.
+Use judgment. Optimize for small, reviewable PRs and for each prompt to leave the
+repo in a working state.
 
-### 3. Print a summary
-Write 2–3 sentences confirming what will be built and the overall approach. This lets the user abort before reading the full plan if the understanding is wrong.
+- Small task: write `AGENT_PROMPT.md` with one prompt.
+- Large but single-PR task: write `AGENT_PROMPT.md` with multiple numbered
+  prompts.
+- Very large, risky, or naturally staged task: write `01_AGENT_PROMPT.md`,
+  `02_AGENT_PROMPT.md`, etc. Each file is one PR.
 
-### 4. Generate the sequenced plan
-Produce numbered steps in recommended execution order. See output format below.
+Each prompt inside a file is one commit-sized unit of work. Avoid splitting into
+"types only", "backend only", or "tests only" unless that commit is independently
+useful and leaves the repo passing.
 
-## Granularity rule
+## Prompt Requirements
 
-Each step = one deployable chunk / one commit's worth of work. The codebase must be in a working state after each step. Never split by layer (no "add types only" steps).
+Every prompt must work in the same context, after context compaction, or in a
+fresh agent window. Include enough grounding for a new agent to move quickly
+without dumping large source excerpts.
 
-- Small task → 3–5 steps
-- Medium feature → 5–8 steps
-- Large feature → 8–15 steps
+Every prompt includes:
 
-## Output format
+- Goal and commit scope
+- Relevant source/spec context
+- File paths to inspect and likely paths to edit
+- Existing patterns, APIs, commands, and constraints to follow
+- Acceptance criteria and verification commands
+- Explicit out-of-scope notes where helpful
 
+Keep prompts context-efficient. A single prompt should not need more than about
+35% of a typical agent context window; split it if it needs too much background
+or touches too many unrelated areas.
+
+## File Formats
+
+Use these names:
+
+```text
+AGENT_PROMPT.md       # one PR, one or more prompts
+01_AGENT_PROMPT.md    # PR 1 of a multi-PR breakdown
+02_AGENT_PROMPT.md    # PR 2 of a multi-PR breakdown
 ```
-## Plan of Action: [task name]
 
-[2–3 sentence summary]
+Use this structure:
 
----
+```md
+# Agent Prompts: <feature or task>
 
-### Step N: [title]
-**Description:** [what needs to be done]
-**Blocked by:** [step numbers] or None
+This file represents PR <number or "1">.
+Prerequisites: <none, or previous prompt files that must be complete>
+PR outcome: <what this PR should contain when finished>
 
-**Agent prompt:**
-[rich prompt — includes: specific goal, relevant file paths, what "done" looks like, constraints]
+## Prompt 1: <commit-sized title>
 
----
+<copy-paste-ready prompt>
 ```
-
-## Agent prompt requirements
-
-Every agent prompt must be self-contained and include:
-- The specific goal for this step
-- File paths to read or modify (from codebase exploration)
-- Clear acceptance criteria — what "done" looks like
-- Any constraints (do not touch X, follow pattern Y, stay consistent with Z)
