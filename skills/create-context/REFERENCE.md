@@ -71,18 +71,19 @@ create this minimal form:
 ```markdown
 # Context Map
 
-> Read this first to choose the relevant CONTEXT.md before exploring source.
+> Read this first. It is a compressed routing map, not documentation.
 
-## path/to/target
-One sentence description of what this area owns.
--> path/to/target/CONTEXT.md
+## Areas
+
+- `path/to/target` - one sentence description of what this area owns. Context:
+  `path/to/target/CONTEXT.md`
 ```
 
 Keep the map as a routing table, not documentation. Each entry should include:
 
-- Heading: normalized path from the repo root
-- One sentence: what the area owns
-- Link line: `-> path/to/target/CONTEXT.md`
+- Path in backticks, normalized from the repo root
+- One short sentence or sentence fragment describing what the area owns
+- `Context: path/to/target/CONTEXT.md`
 
-If the target is the repo root, use `.` as the heading and `CONTEXT.md` as the
-link.
+If the target is the repo root, use `.` as the path and `CONTEXT.md` as the
+context link.

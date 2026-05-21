@@ -1,31 +1,38 @@
 ---
 name: map-context
-description: Generates CONTEXT.md files for each meaningful directory in a codebase, plus a CONTEXT-MAP.md index at the repo root. Updates CLAUDE.md (and AGENTS.md if present) so agents consult the map before exploring code. Use when the user wants to document a codebase for agents, mentions "context map" or "map-context", wants to reduce token burn from codebase exploration, or wants agents to navigate large repos efficiently.
+description: Generates a super-compressed CONTEXT-MAP.md birds-eye index of a codebase at the repo root. Use when the user wants a high-level context map, mentions "context map" or "map-context", wants agents to orient in a large repo without burning context, or needs a routing table to existing or future CONTEXT.md files.
 ---
 
 # map-context
 
-Traverses a codebase, writes a CONTEXT.md for each meaningful directory, builds a CONTEXT-MAP.md index at the repo root, and registers it in CLAUDE.md so agents use it automatically.
+Builds a tiny `CONTEXT-MAP.md` at the repo root: a birds-eye routing table of
+the codebase, not detailed documentation.
 
-For a targeted refresh of one app, package, subsystem, or directory, use
-`create-context` instead.
+Do not write nested `CONTEXT.md` files from this skill. For a targeted brief of
+one app, package, subsystem, or directory, use `create-context`.
 
 ## Invocation
 
-```
-/map-context           # map from current directory
-/map-context src/      # map a specific subtree
+```text
+/map-context           # map the current repo
+/map-context apps/     # map a specific subtree into the root map
 ```
 
 ## Process
 
-1. **Traverse** the target directory recursively, collecting candidate directories
-2. **Qualify** each directory — see [REFERENCE.md](REFERENCE.md) for skip heuristics
-3. **Read** the code in each qualifying directory (source files, not configs/assets)
-4. **Write** CONTEXT.md for each qualifying directory (always overwrite existing)
-5. **Write** CONTEXT-MAP.md at the repo root
-6. **Update** CLAUDE.md — create if missing; add or replace the Codebase Context block
-7. **Update** AGENTS.md — only if it already exists, never create it
-8. **Print** a summary: files written, directories skipped with reasons, confirmations
+1. **Find the root** - use `git rev-parse --show-toplevel`; if it fails, use
+   the current working directory.
+2. **Scan cheaply** - inspect directory names, manifests, existing docs, and
+   obvious entrypoints. Read source only when needed to identify what an area is.
+3. **Group areas** - list meaningful apps, packages, services, libraries, and
+   major subsystems. Skip generated, vendored, cache, build, fixture, and asset
+   directories.
+4. **Write the map** - create or replace `CONTEXT-MAP.md` at the repo root with
+   one compressed entry per meaningful area.
+5. **Register the map** - update `CLAUDE.md`, creating it if missing. Update
+   `AGENTS.md` only if it already exists.
+6. **Report briefly** - summarize the map path, number of areas listed, and
+   any major skipped areas.
 
-See [REFERENCE.md](REFERENCE.md) for content format, skip heuristics, depth rules, and file templates.
+See [REFERENCE.md](REFERENCE.md) for entry format, compression rules, skip
+heuristics, and agent-instruction blocks.
