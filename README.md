@@ -12,6 +12,10 @@ reach and hard to forget.
 
 ## Skills
 
+**Discussion**
+
+- [`ask`](./skills/ask/SKILL.md) - Read-only Q&A, idea discussion, and recommendations — no plan mode, no code changes.
+
 **Feature docs**
 
 - [`brainstorm`](./skills/brainstorm/SKILL.md) - Shape a raw idea into an `IDEA.md` concept brief before there's any plan.
@@ -65,6 +69,8 @@ Or run the same flow inside Claude Code:
 ## Use
 
 ```text
+/ask
+/ask what does the auth middleware do?
 /use-tdd
 /run-diagnose
 /me-caveman
