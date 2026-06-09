@@ -1,6 +1,6 @@
 # Feature Docs Reference
 
-Shared conventions for the `brainstorm`, `create-prd`, and `create-tech-spec` skills.
+Shared conventions for the `grill-me`, `create-prd`, and `create-tech-spec` skills.
 
 ## Directory Structure
 
@@ -21,7 +21,7 @@ Feature names are kebab-case slugs inferred from the idea (e.g. `oauth-login`, `
 | File           | Owner | Notes                                                |
 | -------------- | ----- | ---------------------------------------------------- |
 | `IDEA.md`      | User  | Raw seed. Agent reads but never modifies.            |
-| `CONTEXT.md`   | Agent | Updated incrementally during brainstorm.             |
+| `CONTEXT.md`   | Agent | Updated incrementally during grill-me.               |
 | `PRD.md`       | Agent | Written by `/create-prd`. Patched, not overwritten.  |
 | `TECH_SPEC.md` | Agent | Written by `/create-tech-spec`. Patched, not overwritten. |
 
