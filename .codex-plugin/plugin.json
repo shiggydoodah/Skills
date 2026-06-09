@@ -1,6 +1,6 @@
 {
   "name": "skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
   "author": {
     "name": "Louis Lombardi",

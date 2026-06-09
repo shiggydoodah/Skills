@@ -9,7 +9,7 @@
       "name": "skills",
       "source": "./",
       "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Louis Lombardi"
       },
