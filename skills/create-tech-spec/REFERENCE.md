@@ -1,6 +1,6 @@
 # Feature Docs Reference
 
-Shared conventions for the `brainstorm`, `create-prd`, and `create-tech-spec` skills.
+Shared conventions for the `brainstorm`, `grill-me`, `create-prd`, and `create-tech-spec` skills.
 
 ## Directory Structure
 
@@ -8,7 +8,7 @@ Feature docs live at:
 
 ```
 docs/features/[feature-name]/
-├── IDEA.md       # user-provided raw seed (optional, never modified by agent)
+├── IDEA.md       # concept brief from /brainstorm, or a hand-written seed
 ├── CONTEXT.md    # agent session memory, updated incrementally
 ├── PRD.md        # output of /create-prd
 └── TECH_SPEC.md  # output of /create-tech-spec
@@ -20,8 +20,8 @@ Feature names are kebab-case slugs inferred from the idea (e.g. `oauth-login`, `
 
 | File           | Owner | Notes                                                |
 | -------------- | ----- | ---------------------------------------------------- |
-| `IDEA.md`      | User  | Raw seed. Agent reads but never modifies.            |
-| `CONTEXT.md`   | Agent | Updated incrementally during brainstorm.             |
+| `IDEA.md`      | Agent | Written by `/brainstorm`, or a hand-written seed.    |
+| `CONTEXT.md`   | Agent | Updated incrementally during grill-me.               |
 | `PRD.md`       | Agent | Written by `/create-prd`. Patched, not overwritten.  |
 | `TECH_SPEC.md` | Agent | Written by `/create-tech-spec`. Patched, not overwritten. |
 

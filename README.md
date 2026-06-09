@@ -12,9 +12,14 @@ reach and hard to forget.
 
 ## Skills
 
+**Discussion**
+
+- [`ask`](./skills/ask/SKILL.md) - Read-only Q&A, idea discussion, and recommendations — no plan mode, no code changes.
+
 **Feature docs**
 
-- [`brainstorm`](./skills/brainstorm/SKILL.md) - Stress-test an idea and write `CONTEXT.md` as decisions settle.
+- [`brainstorm`](./skills/brainstorm/SKILL.md) - Shape a raw idea into an `IDEA.md` concept brief before there's any plan.
+- [`grill-me`](./skills/grill-me/SKILL.md) - Stress-test an idea and write `CONTEXT.md` as decisions settle.
 - [`create-prd`](./skills/create-prd/SKILL.md) - Turn context or an `IDEA.md` seed into a structured `PRD.md`.
 - [`create-tech-spec`](./skills/create-tech-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
 
@@ -32,7 +37,8 @@ reach and hard to forget.
 
 **Planning**
 
-- [`plan-of-action`](./skills/plan-of-action/SKILL.md) - Break a task or spec into sequenced, copy-paste-ready agent prompts.
+- [`plan-with-docs`](./skills/plan-with-docs/SKILL.md) - Plan mode that ends in a reviewable plan doc or a refine loop instead of immediate implementation.
+- [`breakdown`](./skills/breakdown/SKILL.md) - Break an existing plan, PRD, or tech spec into small, paste-ready task tickets (one task per file).
 
 **Codebase context**
 
@@ -64,6 +70,12 @@ Or run the same flow inside Claude Code:
 ## Use
 
 ```text
+/ask
+/ask what does the auth middleware do?
+/plan-with-docs
+/plan-with-docs @docs/features/auth/TECH_SPEC.md
+/breakdown
+/breakdown @docs/features/billing/tech_spec.md
 /use-tdd
 /run-diagnose
 /me-caveman
@@ -80,6 +92,7 @@ Or run the same flow inside Claude Code:
 /code-review --pr https://github.com/org/repo/pull/42
 /code-review --inline --pr https://github.com/org/repo/pull/42
 /brainstorm
+/grill-me
 /create-prd
 /create-tech-spec
 /create-context apps/web
@@ -101,6 +114,8 @@ A few notes:
   and `--inline` to post findings as GitHub review comments. If present,
   `.github/instructions/pr-review.instructions.md` is used as project-specific
   review guidance; otherwise PR reviews use the PR description for context.
+- `/plan-with-docs` plans without implementing: it presents a plan, then saves it
+  to a Markdown file or refines it on request, and never starts coding on its own.
 
 ## Feature Docs
 
@@ -110,8 +125,8 @@ By default, feature documents live under `docs/features/[feature-name]/`:
 
 ```
 docs/features/my-feature/
-├── IDEA.md        # optional user-provided seed (never modified by the agent)
-├── CONTEXT.md     # agent session memory, updated incrementally during brainstorm
+├── IDEA.md        # concept brief from /brainstorm (or a hand-written seed)
+├── CONTEXT.md     # agent session memory, updated incrementally during grill-me
 ├── PRD.md         # product requirements document
 └── TECH_SPEC.md   # technical specification ready for implementation
 ```
@@ -120,6 +135,7 @@ Run the steps in sequence from a rough idea:
 
 ```text
 /brainstorm add user authentication with GitHub OAuth
+/grill-me
 /create-prd
 /create-tech-spec
 ```
@@ -137,7 +153,8 @@ Resume an in-progress feature by running the next step from its directory:
 Each step also works on its own:
 
 ```text
-/brainstorm              # focused interview, writes CONTEXT.md
+/brainstorm              # shape an idea, writes IDEA.md
+/grill-me                # focused interview, writes CONTEXT.md
 /create-prd              # PRD.md from CONTEXT.md or IDEA.md
 /create-tech-spec        # TECH_SPEC.md from PRD.md (errors if no PRD.md)
 ```
