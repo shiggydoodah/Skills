@@ -80,7 +80,7 @@ Or run the same flow inside Claude Code:
 /use-tdd
 /run-diagnose
 /audit apps/backend/auth
-/me-caveman
+/caveman
 /create-a-skill
 /commit-this
 /commit-this --short
