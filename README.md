@@ -38,7 +38,7 @@ reach and hard to forget.
 **Planning**
 
 - [`plan-with-docs`](./skills/plan-with-docs/SKILL.md) - Plan mode that ends in a reviewable plan doc or a refine loop instead of immediate implementation.
-- [`plan-of-action`](./skills/plan-of-action/SKILL.md) - Break a task or spec into sequenced, copy-paste-ready agent prompts.
+- [`breakdown`](./skills/breakdown/SKILL.md) - Break an existing plan, PRD, or tech spec into small, paste-ready task tickets (one task per file).
 
 **Codebase context**
 
@@ -74,6 +74,8 @@ Or run the same flow inside Claude Code:
 /ask what does the auth middleware do?
 /plan-with-docs
 /plan-with-docs @docs/features/auth/TECH_SPEC.md
+/breakdown
+/breakdown @docs/features/billing/tech_spec.md
 /use-tdd
 /run-diagnose
 /me-caveman

@@ -1,6 +1,6 @@
 ---
 name: plan-with-docs
-description: Plan-mode workflow that produces a reviewable implementation plan and never implements in the same turn. Explores read-only, presents the plan, then offers to save it to a Markdown file or refine it instead of jumping to code. Use when the user invokes /plan-with-docs, wants a plan written to a Markdown/doc file for later review, wants to plan or design without building, says "plan but don't implement", or wants to iterate on a plan before any code is written. For open discussion with no artifact use ask; to break an existing spec into copy-paste implementation prompts use plan-of-action.
+description: Plan-mode workflow that produces a reviewable implementation plan and never implements in the same turn. Explores read-only, presents the plan, then offers to save it to a Markdown file or refine it instead of jumping to code. Use when the user invokes /plan-with-docs, wants a plan written to a Markdown/doc file for later review, wants to plan or design without building, says "plan but don't implement", or wants to iterate on a plan before any code is written. For open discussion with no artifact use ask; to break an existing plan into paste-ready task tickets use breakdown.
 ---
 
 # plan-with-docs
@@ -85,4 +85,4 @@ Markdown file. Don't begin coding from inside this skill.
   loop instead of immediate implementation.
 - **ask** — open discussion or a recommendation; no plan, no artifact.
 - **brainstorm** — shape a raw idea into `IDEA.md`, before there's a plan.
-- **plan-of-action** — break an existing spec into copy-paste agent prompts.
+- **breakdown** — break an existing plan into paste-ready task tickets.

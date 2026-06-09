@@ -49,7 +49,7 @@ recommend the right next step and let them switch — do not switch automaticall
 
 - shape a raw idea into a brief → `/brainstorm`
 - stress-test a plan that already exists → `/grill-me`
-- break work into implementation prompts → `/plan-of-action`
+- break a plan into paste-ready tasks → `/breakdown`
 - build it with tests → `/use-tdd`
 - review a diff or PR → `/code-review`
 - otherwise, plan mode for a full implementation plan
