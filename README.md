@@ -37,6 +37,7 @@ reach and hard to forget.
 
 **Planning**
 
+- [`plan-with-docs`](./skills/plan-with-docs/SKILL.md) - Plan mode that ends in a reviewable plan doc or a refine loop instead of immediate implementation.
 - [`plan-of-action`](./skills/plan-of-action/SKILL.md) - Break a task or spec into sequenced, copy-paste-ready agent prompts.
 
 **Codebase context**
@@ -71,6 +72,8 @@ Or run the same flow inside Claude Code:
 ```text
 /ask
 /ask what does the auth middleware do?
+/plan-with-docs
+/plan-with-docs @docs/features/auth/TECH_SPEC.md
 /use-tdd
 /run-diagnose
 /me-caveman
@@ -109,6 +112,8 @@ A few notes:
   and `--inline` to post findings as GitHub review comments. If present,
   `.github/instructions/pr-review.instructions.md` is used as project-specific
   review guidance; otherwise PR reviews use the PR description for context.
+- `/plan-with-docs` plans without implementing: it presents a plan, then saves it
+  to a Markdown file or refines it on request, and never starts coding on its own.
 
 ## Feature Docs
 
