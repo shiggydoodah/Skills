@@ -1,4 +1,4 @@
-# LL Skills
+# LL Labs
 
 Practical skills for coding agents.
 
@@ -57,14 +57,14 @@ Install the plugin from a terminal:
 
 ```bash
 claude plugin marketplace add shiggydoodah/Skills
-claude plugin install ll-skills@ll-skills
+claude plugin install skills@ll-labs
 ```
 
 Or run the same flow inside Claude Code:
 
 ```text
 /plugin marketplace add shiggydoodah/Skills
-/plugin install ll-skills@ll-skills
+/plugin install skills@ll-labs
 /reload-plugins
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "ll-skills",
+  "name": "skills",
   "version": "0.1.0",
   "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
   "author": {
@@ -18,7 +18,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "LL Skills",
+    "displayName": "LL Labs",
     "shortDescription": "Practical coding-agent skills",
     "longDescription": "A curated set of coding-agent skills for disciplined TDD, debugging, concise communication, planning interviews, and writing new skills.",
     "developerName": "Louis Lombardi",

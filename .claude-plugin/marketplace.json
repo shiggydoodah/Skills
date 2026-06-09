@@ -1,12 +1,12 @@
 {
-  "name": "ll-skills",
+  "name": "ll-labs",
   "description": "A public marketplace for Louis Lombardi's coding-agent skills.",
   "owner": {
     "name": "Louis Lombardi"
   },
   "plugins": [
     {
-      "name": "ll-skills",
+      "name": "skills",
       "source": "./",
       "description": "A small collection of practical coding-agent skills for Claude Code and Codex.",
       "version": "0.1.0",
