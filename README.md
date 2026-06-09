@@ -14,6 +14,7 @@ reach and hard to forget.
 
 **Feature docs**
 
+- [`brainstorm`](./skills/brainstorm/SKILL.md) - Shape a raw idea into an `IDEA.md` concept brief before there's any plan.
 - [`grill-me`](./skills/grill-me/SKILL.md) - Stress-test an idea and write `CONTEXT.md` as decisions settle.
 - [`create-prd`](./skills/create-prd/SKILL.md) - Turn context or an `IDEA.md` seed into a structured `PRD.md`.
 - [`create-tech-spec`](./skills/create-tech-spec/SKILL.md) - Turn `PRD.md` into `TECH_SPEC.md` with adaptive sections and a coverage check.
@@ -79,6 +80,7 @@ Or run the same flow inside Claude Code:
 /code-review
 /code-review --pr https://github.com/org/repo/pull/42
 /code-review --inline --pr https://github.com/org/repo/pull/42
+/brainstorm
 /grill-me
 /create-prd
 /create-tech-spec
@@ -110,7 +112,7 @@ By default, feature documents live under `docs/features/[feature-name]/`:
 
 ```
 docs/features/my-feature/
-├── IDEA.md        # optional user-provided seed (never modified by the agent)
+├── IDEA.md        # concept brief from /brainstorm (or a hand-written seed)
 ├── CONTEXT.md     # agent session memory, updated incrementally during grill-me
 ├── PRD.md         # product requirements document
 └── TECH_SPEC.md   # technical specification ready for implementation
@@ -119,12 +121,13 @@ docs/features/my-feature/
 Run the steps in sequence from a rough idea:
 
 ```text
-/grill-me add user authentication with GitHub OAuth
+/brainstorm add user authentication with GitHub OAuth
+/grill-me
 /create-prd
 /create-tech-spec
 ```
 
-The agent infers a feature name during grill-me, proposes the directory, then
+The agent infers a feature name during brainstorm, proposes the directory, then
 uses the saved context to write `PRD.md` and `TECH_SPEC.md`.
 
 Resume an in-progress feature by running the next step from its directory:
@@ -137,6 +140,7 @@ Resume an in-progress feature by running the next step from its directory:
 Each step also works on its own:
 
 ```text
+/brainstorm              # shape an idea, writes IDEA.md
 /grill-me                # focused interview, writes CONTEXT.md
 /create-prd              # PRD.md from CONTEXT.md or IDEA.md
 /create-tech-spec        # TECH_SPEC.md from PRD.md (errors if no PRD.md)
