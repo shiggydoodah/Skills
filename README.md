@@ -27,6 +27,7 @@ reach and hard to forget.
 
 - [`use-tdd`](./skills/use-tdd/SKILL.md) - Test-driven development with a red-green-refactor loop.
 - [`run-diagnose`](./skills/run-diagnose/SKILL.md) - Reproduce, isolate, instrument, and fix bugs without guessing.
+- [`audit`](./skills/audit/SKILL.md) - Read-only review of a specific area for security, performance, code quality, or test coverage, with findings triaged by severity.
 
 **Git and GitHub**
 
@@ -78,6 +79,7 @@ Or run the same flow inside Claude Code:
 /breakdown @docs/features/billing/tech_spec.md
 /use-tdd
 /run-diagnose
+/audit apps/backend/auth
 /me-caveman
 /create-a-skill
 /commit-this
@@ -116,6 +118,9 @@ A few notes:
   review guidance; otherwise PR reviews use the PR description for context.
 - `/plan-with-docs` plans without implementing: it presents a plan, then saves it
   to a Markdown file or refines it on request, and never starts coding on its own.
+- `/audit <path>` reviews one area for security, performance, code quality, or
+  test coverage. It is read-only: it reports findings triaged by severity and only
+  offers to write a report or fix issues after you confirm.
 
 ## Feature Docs
 
